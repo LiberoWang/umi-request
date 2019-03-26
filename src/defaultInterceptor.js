@@ -1,4 +1,5 @@
 import { stringify } from "query-string";
+import qs from "qs";
 /**
  * 注册request拦截器
  * get 和 post 参数简化
@@ -50,7 +51,7 @@ export default (url, originOptions = {}) => {
   // 支持类似axios 参数自动拼装, 其他method也可用, 不冲突.
   if (options.params && Object.keys(options.params).length > 0) {
     const str = url.indexOf("?") !== -1 ? "&" : "?";
-    url = `${url}${str}${stringify(options.params)}`;
+    url = `${url}${str}${qs.stringify(options.params)}`;
   }
 
   return {
